@@ -1,0 +1,49 @@
+build:
+  gpu: true
+  python_version: "3.10"
+  cuda: "11.8"
+  system_packages:
+    - "git"
+    - "ffmpeg"
+    - "libsm6"
+    - "libxext6"
+    - "libgl1-mesa-glx"
+    - "ninja-build"  # Added for detectron2 build
+    - "g++"         # Added for C++ compilation
+  python_packages:
+    # Core dependencies with fixed versions
+    - "torch==2.0.1+cu118"
+    - "torchvision==0.15.2+cu118"
+    - "numpy==1.26.4"
+    - "xformers>=0.0.21"
+    - "diffusers>=0.19.0"
+    - "transformers>=4.31.0"
+    - "huggingface-hub>=0.19.3"
+    
+    # Image processing with explicit versions
+    - "Pillow>=10.0.0"
+    - "opencv-python>=4.8.0"
+    - "albumentations>=2.0.0"
+    
+    # Scientific computing
+    - "scipy>=1.11.0"
+    - "einops>=0.6.0"
+    
+    # Machine learning tools with updated versions
+    - "timm>=0.9.0"
+    - "omegaconf>=2.3.0"
+    - "pytorch-lightning>=1.5.0"
+    - "test-tube>=0.7.5"
+    
+    # Other dependencies with updates
+    - "basicsr>=1.4.2"
+    - "safetensors>=0.3.1"
+    - "gradio==4.19.2"
+    - "pydantic>=2.0"
+    
+    # Install detectron2 from source
+    - "git+https://github.com/facebookresearch/detectron2.git"
+    
+
+predict: "predict.py:Predictor"
+image: "r8.im/shashankanil/leffa"  # Replace with your username
